@@ -35,6 +35,9 @@ public class BagelTest {
 ```
 # 答案
 ## Java
+    因为final方法不能被覆盖，所以没法通过修改代码来解决。bagel.getValue() == 4肯定为false，但是要使assertEquals成立，只能使用反射机制，将java.lang.Boolean.TRUE的值改为false，则assertEquals(false,false)成立
+    public static final Boolean TRUE = new Boolean(true);
+    由于Boolean的value定义为private final boolean value;所以必须要setAccessible(true)，取消java语言访问检查
 ```
 import java.lang.reflect.Field;
 public class BagelSolver {
@@ -49,15 +52,6 @@ public class BagelSolver {
             e.printStackTrace();
         }
         return new Bagel();
-  }
-}
-```
-
-## Scala
-```
-object BagelSolver {
-  def getBagel = new {
-    def getValue() : Int = 4
   }
 }
 ```
