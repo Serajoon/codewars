@@ -47,6 +47,27 @@ class duplicateEncodeSuite extends FunSpec {
 # 答案
 ```
   def duplicateEncode(word: String) = {
+    val a = word.toLowerCase()
+    val hashMap: java.util.HashMap[Character, Integer] = new java.util.HashMap[Character, Integer]()
+    a.foreach(t => {
+      if (hashMap.containsKey(t)) {
+        hashMap.put(t, hashMap.get(t) + 1)
+      } else {
+        hashMap.put(t, 1)
+      }
+    })
+    val array: Array[Char] = a.toCharArray
+    val map: Array[Integer] = array.map(t => {
+      val a = hashMap.get(t)
+      a
+    })
+    val array1: Array[String] = for (i <- map)
+      yield if (i == 1) "(" else ")"
+    array1.mkString
+  }
+```
+```
+  def duplicateEncode(word: String) = {
     word.map { char =>
       if (word.count(_.toUpper == char.toUpper) > 1) ')' else '('
     }
