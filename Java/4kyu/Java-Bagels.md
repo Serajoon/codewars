@@ -1,14 +1,14 @@
 # Bagels
 # 题目
 
-```
+``` java
 public class Bagel {
     public final int getValue() {
         return 3;
     }
 }
 ```
-```
+``` java
 public class BagelSolver {
   public static Bagel getBagel() {
     // TODO : Implement me.
@@ -55,3 +55,4 @@ public class BagelSolver {
   }
 }
 ```
+
